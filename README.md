@@ -7,3 +7,7 @@
 </picture>
 
 A graph-based crawler project written in Zig. Early development.
+
+## License
+
+[ISC](LICENSE)

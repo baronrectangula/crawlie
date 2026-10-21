@@ -1,0 +1,65 @@
+# Reusable Crawlie palette. Theme tokens adapt inside a single SVG.
+vars: {
+  d2-config: {
+    layout-engine: dagre
+    theme-id: 0
+    dark-theme-id: 200
+    pad: 48
+    theme-overrides: {
+      N1: "#18191B"
+      N2: "#34363B"
+      N3: "#62656C"
+      N4: "#96999F"
+      N5: "#D8D8D1"
+      N6: "#EEEDE6"
+      N7: "#F8F6EF"
+      B1: "#18191B"
+      B2: "#344CBB"
+      B3: "#758AE0"
+      B4: "#B5C4FF"
+      B5: "#CBD5FF"
+      B6: "#E3E8FF"
+      AA2: "#18191B"
+      AA4: "#EFC84B"
+      AA5: "#FFE183"
+      AB4: "#70B7A0"
+      AB5: "#BCE8D5"
+    }
+    dark-theme-overrides: {
+      N1: "#F8F6EF"
+      N2: "#E7E5DF"
+      N3: "#B6B8BF"
+      N4: "#7A7E88"
+      N5: "#3B3E47"
+      N6: "#292C34"
+      N7: "#17191F"
+      B1: "#F8F6EF"
+      B2: "#BEC9FF"
+      B3: "#8396E8"
+      B4: "#35466F"
+      B5: "#293657"
+      B6: "#222D48"
+      AA2: "#F8F6EF"
+      AA4: "#DAB85C"
+      AA5: "#584721"
+      AB4: "#6FB99D"
+      AB5: "#244C40"
+    }
+  }
+}
+# Shared styles use D2 theme defaults so colors adapt in both modes.
+classes: {
+  block: {
+    shape: rectangle
+    style: {
+      stroke-width: 3
+      border-radius: 0
+      font: mono
+      font-size: 22
+      bold: true
+    }
+  }
+  message-interface: {shape: parallelogram; style.font-size: 20}
+  extension: {style.stroke-dash: 5}
+  flow: {style.stroke-width: 3; style.font: mono; style.font-size: 18}
+}

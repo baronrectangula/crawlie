@@ -1,0 +1,59 @@
+...@palette
+
+direction: down
+
+dag: DAG Definition {
+  class: block
+  width: 340
+  height: 90
+}
+graph: Graph Execution Engine {
+  class: block
+  width: 620
+  height: 100
+}
+command_interface: Command Message Interface {
+  class: [block; message-interface]
+  width: 620
+  height: 80
+}
+manager: Command / Plugin Manager {
+  class: block
+  width: 620
+  height: 100
+}
+plugin_interface: Plugin Message Interface {
+  class: [block; message-interface]
+  width: 620
+  height: 80
+}
+single_fetch: Single Fetch Engine {
+  class: block
+  width: 310
+  height: 120
+}
+playwright: Playwright Engine {
+  class: block
+  width: 310
+  height: 120
+}
+extension: Other Engines … {
+  class: [block; extension]
+  width: 310
+  height: 120
+}
+
+dag -> graph: {class: flow}
+
+# Requests travel down through the interface; results travel back up.
+graph -> command_interface: Command requests {class: flow}
+command_interface -> manager: {class: flow}
+manager -> command_interface: Command results {class: flow}
+command_interface -> graph: {class: flow}
+
+manager -> plugin_interface: Dispatch commands {class: flow}
+plugin_interface -> manager: Plugin results {class: flow}
+# Each plugin exchanges command/result messages through the shared interface.
+plugin_interface <-> single_fetch: {class: flow}
+plugin_interface <-> playwright: {class: flow}
+plugin_interface <-> extension: {class: flow}

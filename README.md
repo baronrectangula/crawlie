@@ -6,6 +6,8 @@
   <img alt="Crawlie" src="assets/brand/svg/crawlie-horizontal-black-on-white.svg" width="560">
 </picture>
 
+[![CI](https://github.com/baronrectangula/crawlie/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/baronrectangula/crawlie/actions/workflows/ci.yml)
+
 A graph-based crawler project written in Zig. Early development.
 
 ## License

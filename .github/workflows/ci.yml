@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Zig version is read from `minimum_zig_version` in build.zig.zon.
+      - uses: mlugg/setup-zig@v2.2.1
+      - name: Check formatting
+        run: zig fmt --check build.zig build.zig.zon src
+      - name: AST check
+        run: find src -name '*.zig' -print0 | xargs -0 -n1 zig ast-check
+
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: mlugg/setup-zig@v2.2.1
+      - name: Run tests
+        run: zig build test --summary all
